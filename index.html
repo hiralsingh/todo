@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List - Arctic Monkeys Theme</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #161616;
+            color: #FFF;
+            margin: 0;
+            padding: 0;
+        }
+
+        #todo-list {
+            margin: 20px auto;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #2B2B2B;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            color: #FF71CE;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 70px);
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #FFF;
+        }
+
+        input[type="text"]::placeholder {
+            color: #BBB;
+        }
+
+        button {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #FF71CE;
+            color: #FFF;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #FF96E6;
+        }
+    </style>
+</head>
+<body>
+<div id="todo-list">
+    <h1>To-Do List - hiral's Arctic Monkeys Theme</h1>
+    <form id="todo-form">
+        <input type="text" id="todo-input" placeholder="Add a new task">
+        <button type="submit">Add</button>
+    </form>
+    <ul id="tasks">
+        <!-- Tasks will be added dynamically here -->
+    </ul>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('todo-form');
+        const input = document.getElementById('todo-input');
+        const taskList = document.getElementById('tasks');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const taskText = input.value.trim();
+            if (taskText !== '') {
+                addTask(taskText);
+                input.value = '';
+            }
+        });
+
+        function addTask(taskText) {
+            const li = document.createElement('li');
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            const label = document.createElement('label');
+            label.textContent = taskText;
+            li.appendChild(checkbox);
+            li.appendChild(label);
+            taskList.appendChild(li);
+        }
+    });
+</script>
+</body>
+</html>
